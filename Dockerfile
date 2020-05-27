@@ -31,3 +31,11 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash && \
     apt-get install -y nodejs
 
 RUN npm install -g testable-openfin-cli
+
+ENV DISPLAY :10
+ENV CHROMEDRIVER_PORT 9515
+ENV CHROMEDRIVER_WHITELISTED_IPS ""
+
+EXPOSE $CHROMEDRIVER_PORT
+
+CMD (service xvfb start; export DISPLAY=$DISPLAY)
